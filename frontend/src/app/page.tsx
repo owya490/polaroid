@@ -45,9 +45,13 @@ export default function Home() {
       </div>
       <div className="w-full flex justify-center mt-6">
         <div className="w-full md:w-[85vw] lg:w-[95vw] xl:w-[75vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-6 justify-items-center">
-          {allPolaroids.map((data, idx) => {
-            return <Polaroid key={idx} {...data} />;
-          })}
+          {allPolaroids
+            .sort((a, b) => {
+              return b.dateNumber - a.dateNumber;
+            })
+            .map((data, idx) => {
+              return <Polaroid key={idx} {...data} />;
+            })}
         </div>
       </div>
       <button

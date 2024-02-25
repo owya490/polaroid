@@ -30,6 +30,8 @@ export default function Home() {
   const [newPolaroid, setNewPolaroid] =
     useState<NewPolaroid>(EMPTY_NEW_POLAROID);
   const [allPolaroids, setAllPolaroids] = useState<PolaroidType[]>([]);
+  const [isNotLoggedIn, setIsNotLoggedIn] = useState(true);
+  const [passcode, setPasscode] = useState("");
 
   useEffect(() => {
     getAllPolaroids().then((data) => {
@@ -37,14 +39,36 @@ export default function Home() {
     });
   }, []);
 
-  return (
+  return isNotLoggedIn ? (
+    <main className="h-screen bg-white flex justify-center items-center">
+      <div className="flex">
+        <CustomInput
+          placeholder={"Enter the passcode"}
+          value={passcode}
+          handleChange={(v) => {
+            setPasscode(v);
+          }}
+        />
+        <button
+          className="bg-blue-300 text-white w-10 ml-2 border-1 border border-blue-gray-200 active:bg-blue-400 active:border-gray-300"
+          onClick={() => {
+            if (passcode === "2749") {
+              setIsNotLoggedIn(false);
+            }
+          }}
+        >
+          {"->"}
+        </button>
+      </div>
+    </main>
+  ) : (
     <main className="bg-blue-200 h-full min-h-screen">
       <div className="border border-b-[1px] h-14 bg-white shadow-md flex items-center">
         <h1 className="ml-5 mr-2 font-indieFlower text-2xl">Ashley and Owen</h1>
         <HeartIcon className="w-5 h-5" />
       </div>
       <div className="w-full flex justify-center mt-6">
-        <div className="w-full md:w-[85vw] lg:w-[95vw] xl:w-[75vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-6 justify-items-center">
+        <div className="w-full md:w-[85vw] lg:w-[95vw] xl:w-[95vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-6 justify-items-center">
           {allPolaroids
             .sort((a, b) => {
               return b.dateNumber - a.dateNumber;

@@ -20,7 +20,7 @@ export default function Polaroid({
     day: "numeric",
   }); // Saturday, September 17, 2016
   return (
-    <div className="w-full z-50 min-w-xs max-w-xs bg-white shadow-lg">
+    <div className="w-[20rem] z-50 min-w-xs max-w-full bg-white shadow-lg">
       <div className="w-[320px] h-[320px] flex justify-center items-center">
         <Image
           priority
@@ -28,11 +28,11 @@ export default function Polaroid({
           alt={""}
           height={280}
           width={280}
-          className="object-cover w-[280px] h-[280px] shadow-[inset_0_2px_4px_0_rgb(0,0,0,0.05)]"
+          className="object-cover w-[280px] h-[280px] max-w-xs shadow-[inset_0_2px_4px_0_rgb(0,0,0,0.05)]"
         />
       </div>
       <div className="px-6 pb-8 font-indieFlower">
-        <h4 className="font-light text-sm">{`Date #${dateNumber}`}</h4>
+        <h4 className="font-light text-sm">{`Memory #${dateNumber}`}</h4>
         <h1 className="font-bold text-xl">{title}</h1>
         <div className="mt-1 flex">
           <h3 className="text-sm ">{dateString}</h3>

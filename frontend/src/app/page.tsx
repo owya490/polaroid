@@ -168,6 +168,9 @@ export default function Home() {
               <button
                 className="border border-black px-2.5 py-1 ml-auto active:bg-slate-300 hover:bg-slate-100"
                 onClick={async () => {
+                  document
+                    .getElementById("create-modal")!
+                    .classList.replace("h-[50vh]", "h-0");
                   if (
                     newPolaroid.image !== undefined &&
                     newPolaroid.title !== ""
@@ -179,9 +182,6 @@ export default function Home() {
                     });
                     setAllPolaroids(await getAllPolaroids());
                   }
-                  document
-                    .getElementById("create-modal")!
-                    .classList.replace("h-[50vh]", "h-0");
                   setNewPolaroid(EMPTY_NEW_POLAROID);
                 }}
               >

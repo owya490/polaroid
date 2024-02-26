@@ -32,7 +32,6 @@ export default function Home() {
   const [allPolaroids, setAllPolaroids] = useState<PolaroidType[]>([]);
   const [isNotLoggedIn, setIsNotLoggedIn] = useState(true);
   const [passcode, setPasscode] = useState("");
-  
 
   useEffect(() => {
     getAllPolaroids().then((data) => {
@@ -63,7 +62,7 @@ export default function Home() {
       </div>
     </main>
   ) : (
-    <main className="bg-blue-200 h-full min-h-screen">
+    <main className="bg-blue-200 h-full min-h-screen pb-20">
       <div className="border border-b-[1px] h-14 bg-white shadow-md flex items-center">
         <h1 className="ml-5 mr-2 font-indieFlower text-2xl">Ashley and Owen</h1>
         <HeartIcon className="w-5 h-5" />

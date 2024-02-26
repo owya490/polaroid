@@ -32,6 +32,7 @@ export default function Home() {
   const [allPolaroids, setAllPolaroids] = useState<PolaroidType[]>([]);
   const [isNotLoggedIn, setIsNotLoggedIn] = useState(true);
   const [passcode, setPasscode] = useState("");
+  
 
   useEffect(() => {
     getAllPolaroids().then((data) => {
